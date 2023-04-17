@@ -101,6 +101,168 @@ setNombreSeleccionado(elemento);
         </tbody>
       </table>
 {/* ------------------------------------------------------------------------------------------------------------------------------------------ */}
+      <Modal isOpen={modalEditar}>
+        <ModalHeader>
+          <div>
+            <h3>Editar Contacto</h3>
+          </div>
+        </ModalHeader>
+        <ModalBody>
+          <div className="form-group">
+            <label>ID</label>
+            <input
+              className="form-control"
+              readOnly
+              type="text"
+              name="id"
+              value={nombreSeleccionado && nombreSeleccionado.id}
+            />
+            <br />
+
+            <label>Nombre</label>
+            <input
+              className="form-control"
+              type="text"
+              name="nombre"
+              value={nombreSeleccionado && nombreSeleccionado.nombre}
+              onChange={handleChange}
+            />
+            <br />
+
+            <label>Apellido</label>
+            <input
+              className="form-control"
+              type="text"
+              name="apellido"
+              value={nombreSeleccionado && nombreSeleccionado.apellido}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Telefono</label>
+            <input
+              className="form-control"
+              type="text"
+              name="telefono"
+              value={nombreSeleccionado && nombreSeleccionado.telefono}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Direccion</label>
+            <input
+              className="form-control"
+              type="text"
+              name="direccion"
+              value={nombreSeleccionado && nombreSeleccionado.direccion}
+              onChange={handleChange}
+            />
+            <br />
+
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn btn-primary" onClick={()=>editar()}>
+            Actualizar
+          </button>
+          <button
+            className="btn btn-danger"
+            onClick={()=>setModalEditar(false)}
+          >
+            Cancelar
+          </button>
+        </ModalFooter>
+      </Modal>
+
+
+      <Modal isOpen={modalEliminar}>
+        <ModalBody>
+          Estás Seguro que deseas eliminar este contacto? {nombreSeleccionado && nombreSeleccionado.nombre}
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn btn-danger" onClick={()=>eliminar()}>
+            Sí
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={()=>setModalEliminar(false)}
+          >
+            No
+          </button>
+        </ModalFooter>
+      </Modal>
+
+
+        <Modal isOpen={modalInsertar}>
+        <ModalHeader>
+          <div>
+            <h3>Insertar contacto</h3>
+          </div>
+        </ModalHeader>
+        <ModalBody>
+          <div className="form-group">
+            <label>ID</label>
+            <input
+              className="form-control"
+              readOnly
+              type="text"
+              name="numero"
+              value={data[data.length-1].id+1}
+            />
+            <br />
+
+            <label>Nombre</label>
+            <input
+              className="form-control"
+              type="text"
+              name="nombre"
+              value={nombreSeleccionado ? nombreSeleccionado.nombre: ''}
+              onChange={handleChange}
+            />
+            <br />
+
+            <label>Apellido</label>
+            <input
+              className="form-control"
+              type="text"
+              name="apellido"
+              value={nombreSeleccionado ? nombreSeleccionado.apellido: ''}
+              onChange={handleChange}
+            />
+            <br />
+
+            <label>Telefono</label>
+            <input
+              className="form-control"
+              type="text"
+              name="telefono"
+              value={nombreSeleccionado ? nombreSeleccionado.telefono: ''}
+              onChange={handleChange}
+            />
+            <br />
+
+            <label>Direccion</label>
+            <input
+              className="form-control"
+              type="text"
+              name="direccion"
+              value={nombreSeleccionado && nombreSeleccionado.direccion}
+              onChange={handleChange}
+            />
+            <br />
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn btn-primary"
+          onClick={()=>insertar()}>
+            Insertar
+          </button>
+          <button
+            className="btn btn-danger"
+            onClick={()=>setModalInsertar(false)}
+          >
+            Cancelar
+          </button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 }
